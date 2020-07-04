@@ -19,6 +19,7 @@
 - has_many :items
 - has_many :purchases
 - has_many :comments
+- has_many :addresses
 
 
 ## itemsテーブル
@@ -43,22 +44,30 @@
 ## purchasesテーブル
 |  column | type | options |
 | --- | --- | --- |
-|  card_number | integer | null: false |
-|  expiration_month | integer | null: false |
-|  expiration_year | integer | null: false |
-|  cvv | integer | null: false |
-|  zipcode | integer | null: false |
-|  prefecture | integer | null: false |
-|  city | string | null: false |
-|  address_line | string | null: false |
-|  building | string | null: false |
-|  phone_number | integer |  |
 |  user | references | null: false, foreign_key: true |
 |  item | references | null: false, foreign_key: true |
+|  address | references | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :user
 - belongs_to :item
+- belongs_to :address
+
+
+## addressesテーブル
+|  column | type | options |
+| --- | --- | --- |
+|  zipcode | integer | null: false |
+|  prefecture | integer | null: false |
+|  city | string | null: false |
+|  address_line | string | null: false |
+|  building | string |  |
+|  phone_number | integer | null: false |
+|  user | references | null: false, foreign_key: true |
+
+### Association
+- belongs_to :user
+- has_many :purchases
 
 
 ## commentsテーブル
