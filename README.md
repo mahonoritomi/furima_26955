@@ -33,7 +33,7 @@
 |  ship_from | integer | null: false |
 |  transport_days | integer | null: false |
 |  price | integer | null: false |
-|  seller_user | references | null: false, foreign_key: true |
+|  user | references | null: false, foreign_key: true |
 
 ### Association
 - has_many :comments
@@ -53,12 +53,12 @@
 |  address_line | string | null: false |
 |  building | string | null: false |
 |  phone_number | integer |  |
-|  buyer_user | references | null: false, foreign_key: true |
+|  user | references | null: false, foreign_key: true |
 |  item | references | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :user
-- belongs_to :purchase
+- belongs_to :item
 
 
 ## commentsテーブル
