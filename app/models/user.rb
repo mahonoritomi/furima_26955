@@ -40,10 +40,4 @@ class User < ApplicationRecord
  
   end
 
-  # with_options numericality: { other_than: 1 } do
-  #   validates :birth_year
-  #   validates :birth_month
-  #   validates :birth_day
-  # end
-
 end
