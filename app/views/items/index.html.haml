@@ -133,6 +133,6 @@
   -# <%# //商品一覧 %>
 .purchase-btn
   %span.purchase-btn-text 出品する
-  %a{:href => "#"}
+  %a{:href => new_item_path}
     = image_tag 'camera.png' , size: '185x50' ,class: "purchase-btn-icon"
 = render "shared/footer"
