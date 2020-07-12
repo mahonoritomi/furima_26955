@@ -1,6 +1,5 @@
 FactoryBot.define do
   factory :item do
-    # image {File.open("#{Rails.root}/public/images/test_image.jpg")}
     after(:build) do |item|
       item.image.attach(io: File.open(Rails.root.join('spec', 'factories', 'images', 'test.jpg')), filename: 'test.jpg', content_type: 'image/jpg')
     end
