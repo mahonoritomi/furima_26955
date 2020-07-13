@@ -2,43 +2,46 @@
 .item-show
   .item-box
     %h2.name
-      = item.name
+      = @item.name
     .item-img-content
-      = image_tag item.image ,class:"item-box-img"
-      .sold-out
-        %span Sold Out!!
+      = image_tag @item.image ,class:"item-box-img"
+      - if Purchase.exists?(item_id: @item.id)
+        .sold-out
+          %span Sold Out!!
     .item-price-box
-      %span.item-price
-        ¥ 999,999,999
+      %span.item-price 
+        = "¥" + "#{@item.price}"
       %span.item-postage
         (税込) 送料込み
-= link_to '商品の編集', "#", method: :get, class: "item-red-btn"
-    %p.or-text or
-    = link_to '削除', "#", method: :delete, class:'item-destroy'
-    = link_to '購入画面に進む', "#" ,class:"item-red-btn"
-    
-.item-explain-box
-      %span= "商品説明"
+    - if @item.user.id == current_user.id
+      = link_to '商品の編集', edit_item_path(@item.id), method: :get, class: "item-red-btn"
+      %p.or-text or
+      = link_to '削除', item_path(@item.id), method: :delete, class:'item-destroy'
+    - elsif user_signed_in?
+      = link_to '購入画面に進む', "#" ,class:"item-red-btn"
+
+    .item-explain-box
+      %span= @item.explanation
     %table.detail-table
       %tbody
         %tr
           %th.detail-item 出品者
-          %td.detail-value= "出品者名"
+          %td.detail-value= @item.user.nickname
         %tr
           %th.detail-item カテゴリー
-          %td.detail-value= "カテゴリー名"
+          %td.detail-value= @item.category.name
         %tr
           %th.detail-item 商品の状態
-          %td.detail-value= "商品の状態"
+          %td.detail-value= @item.condition.name
         %tr
           %th.detail-item 配送料の負担
-          %td.detail-value= "発送料の負担"
+          %td.detail-value= @item.delivery_fee.name
         %tr
           %th.detail-item 発送元の地域
-          %td.detail-value= "発送元の地域"
+          %td.detail-value= @item.ship_from.name
         %tr
           %th.detail-item 発送日の目安
-          %td.detail-value= "発送日の目安"
+          %td.detail-value= @item.transport_days.name
     .option
       .favorite-btn
         = image_tag "star.png" ,class:"favorite-star-icon" ,width:"20",height:"20"
@@ -66,5 +69,4 @@
   %a.another-item{:href => "#"}
     = "商品のカテゴリー名"
     をもっと見る
-  
 = render "shared/footer"
