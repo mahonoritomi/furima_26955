@@ -2,9 +2,9 @@
 .item-show
   .item-box
     %h2.name
-      = "商品名"
+      = item.name
     .item-img-content
-      = image_tag "item-sample.png" ,class:"item-box-img"
+      = image_tag item.image ,class:"item-box-img"
       .sold-out
         %span Sold Out!!
     .item-price-box
@@ -12,11 +12,12 @@
         ¥ 999,999,999
       %span.item-postage
         (税込) 送料込み
-    = link_to '商品の編集', "#", method: :get, class: "item-red-btn"
+= link_to '商品の編集', "#", method: :get, class: "item-red-btn"
     %p.or-text or
     = link_to '削除', "#", method: :delete, class:'item-destroy'
     = link_to '購入画面に進む', "#" ,class:"item-red-btn"
-    .item-explain-box
+    
+.item-explain-box
       %span= "商品説明"
     %table.detail-table
       %tbody
@@ -65,4 +66,5 @@
   %a.another-item{:href => "#"}
     = "商品のカテゴリー名"
     をもっと見る
+  
 = render "shared/footer"
