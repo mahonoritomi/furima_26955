@@ -13,7 +13,7 @@
         = "¥" + "#{@item.price}"
       %span.item-postage
         (税込) 送料込み
-    - if @item.user.id == current_user.id
+    - if user_signed_in? && @item.user.id == current_user.id
       = link_to '商品の編集', edit_item_path(@item.id), method: :get, class: "item-red-btn"
       %p.or-text or
       = link_to '削除', item_path(@item.id), method: :delete, class:'item-destroy'
