@@ -9,7 +9,6 @@ class User < ApplicationRecord
     has_many :comments
     has_many :addresses
   
-
   with_options presence: true do
     validates :nickname, uniqueness: true
     validates :email, uniqueness: true
@@ -25,7 +24,7 @@ class User < ApplicationRecord
     end
 
     validates_format_of :password, :with => /([0-9].*[a-zA-Z]|[a-zA-Z].*[0-9])/, :message => "パスワードには必ず英字・数字の両方を含めてください"
- 
+  
   end
 
   extend ActiveHash::Associations::ActiveRecordExtensions
@@ -37,7 +36,9 @@ class User < ApplicationRecord
     validates :birth_year
     validates :birth_month
     validates :birth_day
- 
+  
   end
+
+  
 
 end

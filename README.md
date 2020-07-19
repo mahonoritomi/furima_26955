@@ -40,13 +40,13 @@
 - has_many :comments
 - belongs_to :user
 - has_one :purchase
+- has_one :address
 
 ## purchasesテーブル
 |  column | type | options |
 | --- | --- | --- |
 |  user | references | null: false, foreign_key: true |
 |  item | references | null: false, foreign_key: true |
-|  address | references | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :user
@@ -57,16 +57,18 @@
 ## addressesテーブル
 |  column | type | options |
 | --- | --- | --- |
-|  zipcode | integer | null: false |
+|  zipcode | string | null: false |
 |  prefecture | integer | null: false |
 |  city | string | null: false |
 |  address_line | string | null: false |
 |  building | string |  |
-|  phone_number | integer | null: false |
+|  phone_number | string | null: false |
 |  user | references | null: false, foreign_key: true |
+|  item | references | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :user
+- belongs_to :item
 - has_many :purchases
 
 
