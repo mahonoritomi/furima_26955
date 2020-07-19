@@ -68,3 +68,5 @@ gem 'active_hash'
 gem "haml-rails", ">= 1.0", '<= 2.0.1'
 gem 'mini_magick'
 gem 'payjp'
+gem 'fog-aws'
+gem "aws-sdk-s3", require: false
