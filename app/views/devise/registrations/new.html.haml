@@ -1,10 +1,18 @@
 = render "shared/second-header"
 = form_with model: @user, url: user_registration_path, method: "POST", class: 'registration-main', local: true do |f|
+  
   .form-wrap
     .form-header
       %h1.form-header-text
         会員情報入力
     .form-group
+      - if @user.errors.any?
+        .error-alert
+          %h2= "#{@user.errors.full_messages.count}件のエラーが発生しました。"
+        .error-message
+          %ul
+            - @user.errors.full_messages.each do |message|
+              %li= message
       .form-text-wrap
         %label.form-text ニックネーム
         %span.indispensable 必須
