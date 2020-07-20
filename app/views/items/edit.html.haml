@@ -5,6 +5,13 @@
     .items-sell-main
       %h2.items-sell-title 商品の情報を入力
       = form_with model: @item, url: item_path(@item.id), method: "PATCH", local: true do |f|
+        - if @item.errors.any?
+          .error-alert
+            %h2= "#{@item.errors.full_messages.count}件のエラーが発生しました。"
+          .error-message
+            %ul
+              - @item.errors.full_messages.each do |message|
+                %li= message
         .img-upload
           .weight-bold-text
             出品画像
