@@ -1,0 +1,7 @@
+.comments
+  .comment-date
+    = comment.created_at.strftime("%m/%d %H:%M")
+  .comment-nickname
+    = comment.user.nickname
+  .comment-content
+    = comment.text

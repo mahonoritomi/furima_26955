@@ -4,10 +4,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   
-    has_many :items
-    has_many :purchases
-    has_many :comments
-    has_many :addresses
+  has_many :items
+  has_many :purchases
+  has_many :comments
+  has_many :addresses
   
   with_options presence: true do
     validates :nickname, uniqueness: true

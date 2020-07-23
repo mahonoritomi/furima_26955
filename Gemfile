@@ -70,3 +70,4 @@ gem 'mini_magick'
 gem 'payjp'
 gem 'fog-aws'
 gem "aws-sdk-s3", require: false
+gem 'jquery-rails'

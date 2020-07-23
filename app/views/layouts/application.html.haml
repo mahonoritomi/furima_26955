@@ -7,7 +7,7 @@
     = csp_meta_tag
     
     = stylesheet_link_tag 'application', media: 'all'
-    = javascript_pack_tag 'application'
+    = javascript_include_tag 'application'
     %script{:src => "https://js.pay.jp/v1/", :type => "text/javascript"}
   %body
     = yield
