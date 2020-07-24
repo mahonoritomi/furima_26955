@@ -1,5 +1,7 @@
 const pay = () => {
-  Payjp.setPublicKey(process.env.PAYJP_PUBLIC_KEY);
+  // Payjp.setPublicKey(process.env.PAYJP_PUBLIC_KEY);
+  // Payjp.api_key = ENV["PAYJP_PUBLIC_KEY"];
+  Payjp.setPublicKey("pk_test_32cc2d65e2959e21ad74ee27");
   const form = document.getElementById("charge-form");
   form.addEventListener("submit", (e) => {
     e.preventDefault();
