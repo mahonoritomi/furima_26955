@@ -13,12 +13,6 @@ class PurchasesController < ApplicationController
     @purchase = AddressPurchase.new(purchase_params)
     if @purchase.valid?
       pay_item
-      binding.pry
-      Payjp::Charge.create(
-        amount: @item.price,
-        card: purchase_params[:token],
-        currency: 'jpy'
-      )
       @purchase.save
       return redirect_to root_path
     else
@@ -37,6 +31,11 @@ class PurchasesController < ApplicationController
 
   def pay_item
     Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+    Payjp::Charge.create(
+      amount: @item.price,
+      card: purchase_params[:token],
+      currency: 'jpy'
+    )
   end
 
 end
